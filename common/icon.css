@@ -1,0 +1,24 @@
+@font-face {font-family: "iconfont";
+  src: url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAATUAAsAAAAACUwAAASFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqGDIUhATYCJAMQCwoABCAFhG0HQxsOCCOS7U2a7J+HsbHy8EDiTafTLf0a77VZgsgVlz91pD8S9zkePsey95PsNgVFrtPx7aqSBkBJqEwVS7pz/oS68WzEDv+e+V50ad4BYG4A0s3t5oM9QMVAfG5zM9wyKkKxJPaXn74jKf0WwoX8CoA/7qcuxfPZtzlVBqWOdgMcRevAIgqjbTrdhHEP8VaXuZlAlyEtMXde21MVeq9A3MerEzWhUCpiQxWaBROLeEKq6SH94NH7ffwfjUrSyPSBW+z8uam34Nc6nGtzuQ4Kczgd2GlktFCI60LDKchBoCXrkpsXk6iqxFB1IW/X/W8jayuCavzlEZJMNOmCHsSPBzO/gIUQ/ApBSPxap5ABW4QVoqKDm2MFJIPDHJ8ARxgnbWNzRYeNffbpyX1XGYHqhGWFammPZU+rWacFwji1RqteJJcxbdMPcZQ5abdOfSkD+f0ICXvBmYBhBMc1MU61gmFg0113ZuK2LkgVqFdBdZx/smSgenm1Rr9FNRKqVaollVUshWTg/bbgrj7kS58GfBeHXZKawOqqEn6VepvEH0ok6U2S8PMiXZEoFRwXGVaoAa4SKQmroT/kKhjFiioIqzSab/lAqTSjWeoxKdYTi9PA7A09wKlxELIVqhWVaFKsCyqFGrBZslEgsi0ehnztjFnUmNY3rdclGrVShyThAtFtESe+I0bCmKLujIqX+RRNf3t+/1WdCaktdzZr7vp1nmp/nemkMCrRyAVpL+tYoX8qCKgdCc2cDE5vRS5561tqm5VZ5QjrPax+UJSKjjLPSX5PPb2hmU4/FMGxdPNqwLu4StMu2sbaRqSjf/Q61lmlkJKdfNNfp2RgCLaqKNA8iqnN2MtQPB4yD5d3jQoPTIwMNZdXCY13xigl1iv79Gm4ZP0wa10QGqCoCNoC1jJhhctOny5MYj2QEsES+/CQtYDcxQKC0kh5Gcsl8TVPsLJNLXlmPk6BZ86QJ/sUmGxow8qe1MQvkWU0SVLV99JpL/X51DSVZq4gqyOrEKywFLgdf3SOcbD03XXMSzP8asNB7zCQkQHDYKjDC2No0SKhWP/cwbl0Z0eraP0+vagUvehef4hVkP7COiIoPTkEhMH0GsNhWEYmWAYA2mfw63iwR+TyXZwL9ec/ePlP1Qm8UcMfChR8/9Dooeb8PPbvJ9rbXAHNmX8GU2b+QsyGaUVh68pSJI7FUI3FilgvCdCFAfw4EXo9HUI00DiaQFOLIJGhBxnNFF3wttCAuEITLQC62IiY3k3FCoCDhQeAYTsJQIqGASPvFOAU3UAT+CdAUvcFKIqBAyMdqiyImEc8NgdBo+jB/iE6XslUa+PHXjG8s5E42yM8UfbohqHt0+ELrihDDNk/YVQlIOEFzmQ7zJlhE36h03ZW3aauo6ILtY6XohEiaBQ92D9Exys52bXJfP+K4Z2NVKSUqZ8oe2wchrZvgL4I1kYpl9J8/4RRlahuJLzAGXSYjQDDVtzuhU7buYNvmzrMRE0F7fSi5Q6XAABDPwMRKXKUaCCuecHS8xrUxIpw/UWzhqIAAAAA') format('woff2');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e600";
+}
+
+.icon-dongtai:before {
+  content: "\e643";
+}
+
+.icon-fenxiang:before {
+  content: "\e678";
+}
+
