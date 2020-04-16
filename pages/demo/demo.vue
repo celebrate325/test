@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="view-box animate a-swing" hover-stay-time="800" hover-class="view-box-hover"></view>
+		<view class="view-box animate a-swing" hover-stay-time="500" hover-class="view-box-hover"></view>
 	</view>
 </template>
 
