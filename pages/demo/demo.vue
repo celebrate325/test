@@ -1,6 +1,40 @@
 <template>
 	<view>
 		<view class="view-box animate a-swing" hover-stay-time="500" hover-class="view-box-hover"></view>
+		<view>官方列表样式</view>
+		<view class="uni-list">
+			<view class="uni-list-cell">
+				<view class="uni-list-cell-navigate uni-navigate-right">
+					列表一
+				</view>
+			</view>
+			<view class="uni-list-cell">
+				<view class="uni-list-cell-navigate uni-navigate-right">
+					列表二
+				</view>
+			</view>
+		</view>
+		<!-- <web-view src="https://www.iconfont.cn/"></web-view> -->
+		<view class="box">
+			<view class="box-item" v-for="(item,index) in number" :key="index">{{item.num}}</view>
+		</view>
+		<view class="box1">
+			<view class="box-item1">1</view>
+			<view class="box-item1">2</view>
+			<view class="box-item1">3</view>
+			<view class="box-item1">4</view>
+			<view class="box-item1">5</view>
+			<view class="box-item1">6</view>
+			<view class="box-item1">7</view>
+		</view>
+		<view class="box2">
+			<view class="box-item2">1</view>
+			<view class="box-item2">1</view>
+			<view class="box-item2">1</view>
+			<view class="box-item2">1</view>
+			<view class="box-item2">1</view>
+			<view class="box-item2">1</view>
+		</view>
 	</view>
 </template>
 
@@ -8,7 +42,7 @@
 	export default {
 		data() {
 			return {
-				
+				number:[{num:1,},{num:2},{num:3},{num:4},{num:5},{num:6}]
 			}
 		},
 		methods: {
@@ -25,7 +59,7 @@
 		justify-content: center;
 	}
 	
-	.view-box{
+	.view-box{ 
 		width: 200upx;
 		height: 200upx;
 		background: #CCCCCC;
@@ -36,5 +70,87 @@
 	.view-box-hover{
 		background: red;
 	}
-
+	.box{
+		display: flex;//水平定位,不换行
+		flex-wrap: wrap;//nowrap不换行 | wrap-reverse倒叙换行
+		height: 500upx;
+		width: 96%;
+		justify-content: space-between;//space-around | flex-start |flex-end
+		border: 1upx solid #ccc;
+		padding: 20upx 10upx;
+		align-items: stretch;//自动计算子元素的高宽
+	}
+	.box-item{
+		background: #007AFF;
+		color: #fff;
+		height: 200upx;
+		width: 200upx;
+		font-size: 30upx;
+		font-weight: bold;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	//奇数列表
+	.box-item:nth-of-type(odd){
+		background: #007AFF;
+	}
+	.box-item:nth-of-type(even){
+		background: #09BB07;
+	}
+	.box-item1{
+		color: #fff;
+		height: 200upx;
+		width: 200upx;
+		font-size: 30upx;
+		font-weight: bold;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #007AFF;
+	}
+	.box1{
+		height: 300upx;
+		width: 100%;
+		border: 1upx solid #333333;
+		display: flex;
+	}
+	.box-item1:first-of-type{
+		flex-shrink: 0;//第一个元素不被压缩
+	} 
+	//偶数元素改变样式
+	.box-item1:nth-of-type(even){
+		background: #09BB07;
+	}
+	.box2{
+		height: 300upx;
+		width: 100%;
+		border: 1upx solid #333333;
+		display: flex;
+	}
+	.box-item2{
+		color: #fff;
+		height: 200upx;
+		/* width: 200upx; */
+		flex: 1;//平均各占一份
+		font-size: 30upx;
+		font-weight: bold;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #007AFF;
+	}
+	.box-item2:nth-of-type(even){
+		background: #09BB07;
+	}
+	.box-item2:nth-of-type(4){
+		flex:1;
+		}
+	.box-item2:nth-of-type(5){
+		flex: 2;//占两份
+	}
+	.box-item2:nth-of-type(6){
+		flex: 1;
+	}
 </style>

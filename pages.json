@@ -3,18 +3,66 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "小案例"
 			}
+		}, {
+			"path": "pages/demo/demo",
+			"style": {}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {}
+		},
+		{
+			"path": "pages/home/home",
+			"style": {}
+		},
+		{
+			"path": "pages/paper/paper",
+			"style": {}
 		}
-	    ,{
-            "path" : "pages/demo/demo",
-            "style" : {}
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "uniapp案列分析",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	// 底部导航
+	"tabBar": {
+		"color": "#adadad",
+		"selectedColor": "#fee42b",
+		"borderStyle": "black",
+		"backgroundColor":"#FFFFFF",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "糗事",
+				"iconPath": "static/tabbar/index.png",
+				"selectedIconPath": "static/tabbar/indexed.png"
+			},
+			{
+				"pagePath": "pages/news/news",
+				"text": "动态",
+				"iconPath": "static/tabbar/news.png",
+				"selectedIconPath": "static/tabbar/newsed.png"
+			},
+			{
+				"pagePath": "pages/paper/paper",
+				"text": "小纸条",
+				"iconPath": "static/tabbar/paper.png",
+				"selectedIconPath": "static/tabbar/papered.png"
+			},
+			{
+				"pagePath": "pages/home/home",
+				"text": "我的",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/homeed.png"
+			}
+		]
 	}
+
 }
