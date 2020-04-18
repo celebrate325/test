@@ -3,14 +3,45 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "小案例"
+				/* "navigationBarTitleText": "小案例", */
+				"app-plus": {
+					"scrollIndicator": "none", //隐藏滚动条
+					"titleNView": {
+						// 搜索框配置
+						"searchInput": {
+							"align": "center",
+							"backgroundColor": "#f7f7f7",
+							"borderRadius": "4px",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#ccc",
+							"disabled": true
+						},
+						// 配置按钮
+						"buttons": [
+							//左边
+							{
+								"color": "#ff9619",
+								"colorPressed": "#bbb",
+								"float":"left",
+								"fontSize":"40px",
+								"fontSrc":"/static/font/icon.ttf",
+								"text":"\ue65f"
+							},
+							//右边
+							{
+								"color": "#000",
+								"colorPressed": "#bbb", 
+								"float":"right",
+								"fontSize":"40px",
+								"fontSrc":"/static/font/icon.ttf",
+								"text":"\ue61d"
+							}
+						]
+					}
+				}
 			}
 		}, {
 			"path": "pages/demo/demo",
-			"style": {}
-		},
-		{
-			"path": "pages/index/index",
 			"style": {}
 		},
 		{
@@ -24,20 +55,32 @@
 		{
 			"path": "pages/paper/paper",
 			"style": {}
+		},
+		{
+			"path": "pages/demo/arrary",
+			"style": {}
+		},
+		{
+			"path": "pages/demo/watch",
+			"style": {}
+		},
+		{
+			"path": "pages/demo/compute",
+			"style": {}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uniapp案列分析",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff"
 	},
 	// 底部导航
 	"tabBar": {
 		"color": "#adadad",
 		"selectedColor": "#fee42b",
 		"borderStyle": "black",
-		"backgroundColor":"#FFFFFF",
+		"backgroundColor": "#FFFFFF",
 		"list": [{
 				"pagePath": "pages/index/index",
 				"text": "糗事",
