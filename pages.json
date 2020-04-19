@@ -22,19 +22,19 @@
 							{
 								"color": "#ff9619",
 								"colorPressed": "#bbb",
-								"float":"left",
-								"fontSize":"40px",
-								"fontSrc":"/static/font/icon.ttf",
-								"text":"\ue65f"
+								"float": "left",
+								"fontSize": "40px",
+								"fontSrc": "/static/font/icon.ttf",
+								"text": "\ue65f"
 							},
 							//右边
 							{
 								"color": "#000",
-								"colorPressed": "#bbb", 
-								"float":"right",
-								"fontSize":"40px",
-								"fontSrc":"/static/font/icon.ttf",
-								"text":"\ue61d"
+								"colorPressed": "#bbb",
+								"float": "right",
+								"fontSize": "40px",
+								"fontSrc": "/static/font/icon.ttf",
+								"text": "\ue61d"
 							}
 						]
 					}
@@ -66,6 +66,9 @@
 		},
 		{
 			"path": "pages/demo/compute",
+			"style": {}
+		}, {
+			"path": "components/index/index-list/index-list",
 			"style": {}
 		}
 	],

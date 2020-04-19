@@ -1,105 +1,250 @@
 <template>
 	<view>
-		<view class="index-list">
-			<view class="index-list1 u-f-ac u-f-jsb">
-				<view class="u-f-ac">
-					<image src="../../static/logo.png" mode="widthFix" lazy-load></image>
-					昵称
-				</view>
-				<view class="u-f-ac">
-					<view class="icon iconfont iconzengjia"></view>关注
-				</view>
-			</view>
-			<view class="index-list2">我是标题</view>
-			<view class="index-list3">
-				<image src="../../static/demo/detapic/11.jpg" mode="widthFix" lazy-load></image>
-			</view>
-			<view class="index-list4 u-f-ac u-f-jsb">
-				<view class="u-f-ac">
-					<view class="u-f-ac">
-						<view class="icon iconfont iconsmile"></view>10
+		<view class="uni-tab-bar">
+			<scroll-view scroll-x class="uni-swiper-tab">
+				<block v-for="(tab,index) in tabBars" :key="tab.id">
+					<view class="swiper-tab-list" :class="{'active':tabIndex==index}" @tap="tabtap(index)">{{tab.name}}
+						<view class="swiper-tab-line"></view>
 					</view>
-					<view class="u-f-ac">
-						<view class="icon iconfont iconkulian"></view>10
-					</view>
-				</view>
-				<view class="u-f-ac">
-					<view class="u-f-ac">
-						<view class="icon iconfont iconpinglun"></view>10
-					</view>
-					<view class="u-f-ac">
-						<view class="icon iconfont iconforward"></view>10
-					</view>
-				</view>
-			</view>
+				</block>
+			</scroll-view>
 		</view>
+
+		<view class="uni-tab-bar">
+			<swiper class="swiper-box" :style="{height:swiperheight+'px'}" :current="tabIndex" @change="tabChange">
+				<swiper-item v-for="(items,index) in newsList" :key="index">
+					<scroll-view scroll-y class="list">
+						<block v-for="(item,index1) in items.list" :key="index1">
+							<index-list :item="item" :index="index1"></index-list>
+						</block>
+					</scroll-view>
+				</swiper-item>
+				<swiper-item>
+					<view class="swiper-item"></view>
+				</swiper-item>
+			</swiper>
+		</view>
+
+
 	</view>
 </template>
 
 <script>
+	import indexList from "../../components/index/index-list/index-list.vue";
 	export default {
+		components: {
+			indexList
+		},
 		data() {
-			return {}
+			return {
+				swiperheight: 500,
+				tabIndex: 0,
+				tabBars: [{
+					name: "关注",
+					id: "guanzhu"
+				}, {
+					name: "推荐",
+					id: "tuijian"
+				}, {
+					name: "体育",
+					id: "tiyu"
+				}, {
+					name: "热点",
+					id: "redian"
+				}, {
+					name: "财经",
+					id: "caijing"
+				}, {
+					name: "娱乐",
+					id: "yule"
+				}],
+				newsList: [{
+					list: [{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: false,
+							title: "我是标题",
+							type: "img", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							infonum: {
+								index: 0, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						},
+						{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: true,
+							title: "我是标题",
+							type: "video", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							playnum: "20w",
+							long: "2:47",
+							infonum: {
+								index: 1, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						}
+					]
+				}, {
+					list: [{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: false,
+							title: "我是标题",
+							type: "img", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							infonum: {
+								index: 0, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						},
+						{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: true,
+							title: "我是标题",
+							type: "video", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							playnum: "20w",
+							long: "2:47",
+							infonum: {
+								index: 1, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						}
+					]
+				}, {
+					list: [{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: false,
+							title: "我是标题",
+							type: "img", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							infonum: {
+								index: 0, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						},
+						{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: true,
+							title: "我是标题",
+							type: "video", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							playnum: "20w",
+							long: "2:47",
+							infonum: {
+								index: 1, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						}
+					]
+				}, {
+					list: [{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: false,
+							title: "我是标题",
+							type: "img", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							infonum: {
+								index: 0, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						},
+						{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: true,
+							title: "我是标题",
+							type: "video", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							playnum: "20w",
+							long: "2:47",
+							infonum: {
+								index: 1, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						}
+					]
+				}, {
+					list: []
+				}, {
+					list: []
+				}, ],
+			}
 		},
 		onLoad() {
-
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(100)
+					this.swiperheight = height
+				}
+			})
 		},
 		methods: {
-
-		}
+			// tabbar点击事件
+			tabtap(index) {
+				this.tabIndex = index;
+			},
+			// 滑动事件
+			tabChange(e) {
+				this.tabIndex = e.detail.current;
+			}
+		},
 	}
 </script>
 
 <style>
-	
-	.index-list {
-		padding: 20upx;
-		border-bottom: 1upx solid #eee;
+	.uni-swiper-tab {
+		border: 1upx solid #eee;
 	}
 
-	.index-list1>view:first-child {
-		align-items: center;
-		color: #999;
+	.swiper-tab-list {
+		color: #969696;
+		font-weight: bold;
 	}
 
-	.index-list1>view:last-child {
-		align-items: center;
-		background: #f4f4f4;
-		border-radius: 5upx;
-		padding: 0 10upx;
+	.uni-tab-bar .active {
+		color: #343434;
 	}
 
-	.index-list1>view:first-child image {
-		width: 85upx;
-		height: 85upx;
-		border-radius: 100%;
-		margin-right: 10upx;
-	}
-
-	.index-list2 {
-		padding-top: 15upx;
-		font-size: 32upx;
-	}
-
-	.index-list3 {
-		padding-top: 15upx;
-	}
-
-	.index-list3>image {
-		width: 100%;
+	.active .swiper-tab-line {
+		border-bottom: 6upx solid #fede33;
+		width: 70upx;
+		margin: auto;
+		border-top: 6upx solid #fede33;
 		border-radius: 20upx;
 	}
 
-	.index-list4 {
-		padding: 15upx 0;
+	.swiper-box {
+		height: 500upx;
 	}
-
-	.index-list4 view {
-		color: #999;
-	}
-
-	.index-list4>view>view>view,.index-list4>view>view:first-child{
-		margin-right: 10upx;
-	}
-
 </style>
