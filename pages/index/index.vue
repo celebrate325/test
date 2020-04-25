@@ -1,22 +1,23 @@
 <template>
 	<view>
-		<view class="uni-tab-bar">
-			<scroll-view scroll-x class="uni-swiper-tab">
-				<block v-for="(tab,index) in tabBars" :key="tab.id">
-					<view class="swiper-tab-list" :class="{'active':tabIndex==index}" @tap="tabtap(index)">{{tab.name}}
-						<view class="swiper-tab-line"></view>
-					</view>
-				</block>
-			</scroll-view>
-		</view>
-
+		<swiper-tab-head :tabBars="tabBars" :tabIndex="tabIndex" @tabtap="tabtap"></swiper-tab-head>
 		<view class="uni-tab-bar">
 			<swiper class="swiper-box" :style="{height:swiperheight+'px'}" :current="tabIndex" @change="tabChange">
 				<swiper-item v-for="(items,index) in newsList" :key="index">
-					<scroll-view scroll-y class="list">
-						<block v-for="(item,index1) in items.list" :key="index1">
-							<index-list :item="item" :index="index1"></index-list>
-						</block>
+					<scroll-view scroll-y class="list" @scrolltolower="loadmore(index)">
+						<template v-if="items.list.length>0">
+							<!-- 图文列表 -->
+							<block v-for="(item,index1) in items.list" :key="index1">
+								<index-list :item="item" :index="index1"></index-list>
+							</block>
+							<!-- 上拉加载更多 -->
+							<load-more :loadtext="items.loadtext"></load-more>
+						</template>
+						<template v-else>
+							<!-- 无内容默认 -->
+							<no-thing></no-thing>
+						</template>
+
 					</scroll-view>
 				</swiper-item>
 				<swiper-item>
@@ -31,9 +32,15 @@
 
 <script>
 	import indexList from "../../components/index/index-list/index-list.vue";
+	import swiperTabHead from '../../components/index/index-list/swiper-tab-head.vue';
+	import loadMore from "../../components/common/load-more.vue";
+	import noThing from '../../components/common/no-thing.vue';
 	export default {
 		components: {
-			indexList
+			indexList,
+			swiperTabHead,
+			loadMore,
+			noThing
 		},
 		data() {
 			return {
@@ -59,6 +66,42 @@
 					id: "yule"
 				}],
 				newsList: [{
+					loadtext: "上拉加载更多",
+					list: [{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: false,
+							title: "我是标题",
+							type: "img", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							infonum: {
+								index: 0, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						},
+						{
+							userpic: "../../static/logo.png",
+							username: "昵称",
+							isguanzhu: true,
+							title: "我是标题",
+							type: "video", //img:图文，video:视频
+							titlepic: "../../static/demo/detapic/11.jpg",
+							playnum: "20w",
+							long: "2:47",
+							infonum: {
+								index: 0, //0:没有操作 1：顶 2：踩
+								dingnum: 11,
+								cainum: 11,
+							},
+							commentnum: 10,
+							sharenum: 10,
+						}
+					]
+				}, {
+					loadtext: "上拉加载更多",
 					list: [{
 							userpic: "../../static/logo.png",
 							username: "昵称",
@@ -93,6 +136,7 @@
 						}
 					]
 				}, {
+					loadtext: "上拉加载更多",
 					list: [{
 							userpic: "../../static/logo.png",
 							username: "昵称",
@@ -118,7 +162,7 @@
 							playnum: "20w",
 							long: "2:47",
 							infonum: {
-								index: 1, //0:没有操作 1：顶 2：踩
+								index: 2, //0:没有操作 1：顶 2：踩
 								dingnum: 11,
 								cainum: 11,
 							},
@@ -127,76 +171,13 @@
 						}
 					]
 				}, {
-					list: [{
-							userpic: "../../static/logo.png",
-							username: "昵称",
-							isguanzhu: false,
-							title: "我是标题",
-							type: "img", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
-							infonum: {
-								index: 0, //0:没有操作 1：顶 2：踩
-								dingnum: 11,
-								cainum: 11,
-							},
-							commentnum: 10,
-							sharenum: 10,
-						},
-						{
-							userpic: "../../static/logo.png",
-							username: "昵称",
-							isguanzhu: true,
-							title: "我是标题",
-							type: "video", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
-							playnum: "20w",
-							long: "2:47",
-							infonum: {
-								index: 1, //0:没有操作 1：顶 2：踩
-								dingnum: 11,
-								cainum: 11,
-							},
-							commentnum: 10,
-							sharenum: 10,
-						}
-					]
-				}, {
-					list: [{
-							userpic: "../../static/logo.png",
-							username: "昵称",
-							isguanzhu: false,
-							title: "我是标题",
-							type: "img", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
-							infonum: {
-								index: 0, //0:没有操作 1：顶 2：踩
-								dingnum: 11,
-								cainum: 11,
-							},
-							commentnum: 10,
-							sharenum: 10,
-						},
-						{
-							userpic: "../../static/logo.png",
-							username: "昵称",
-							isguanzhu: true,
-							title: "我是标题",
-							type: "video", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
-							playnum: "20w",
-							long: "2:47",
-							infonum: {
-								index: 1, //0:没有操作 1：顶 2：踩
-								dingnum: 11,
-								cainum: 11,
-							},
-							commentnum: 10,
-							sharenum: 10,
-						}
-					]
-				}, {
+					loadtext: "上拉加载更多",
 					list: []
 				}, {
+					loadtext: "上拉加载更多",
+					list: []
+				}, {
+					loadtext: "上拉加载更多",
 					list: []
 				}, ],
 			}
@@ -209,7 +190,53 @@
 				}
 			})
 		},
+		//监听搜索框点击事件
+		onNavigationBarSearchInputClicked() {
+			 uni.navigateTo({
+			 	url:"../search/search"
+			 })
+		},
+		//监听原生标题导航按钮点击事件
+		onNavigationBarButtonTap(e) {
+			switch (e.index){
+				case 1:
+				uni.navigateTo({
+					url:"../add-input/add-input",
+				})
+					break;
+			}
+		},
 		methods: {
+			//上拉加载
+			loadmore(index) {
+				if (this.newsList[index].loadtext != "上拉加载更多") {
+					return;
+				}
+				//修改状态
+				this.newsList[index].loadtext = "加载中...";
+				//获取数据
+				setTimeout(() => {
+					//获取完成
+					let obj = {
+						userpic: "../../static/logo.png",
+						username: "昵称",
+						isguanzhu: false,
+						title: "我是标题",
+						type: "img", //img:图文，video:视频
+						titlepic: "../../static/demo/detapic/11.jpg",
+						infonum: {
+							index: 0, //0:没有操作 1：顶 2：踩
+							dingnum: 11,
+							cainum: 11,
+						},
+						commentnum: 10,
+						sharenum: 10,
+					};
+					this.newsList[index].list.push(obj);
+					this.newsList[index].loadtext = "上拉加载更多";
+				}, 1000);
+				// this.newsList[index].loadtext="没有更多数据了";
+			},
 			// tabbar点击事件
 			tabtap(index) {
 				this.tabIndex = index;
@@ -222,29 +249,6 @@
 	}
 </script>
 
-<style>
-	.uni-swiper-tab {
-		border: 1upx solid #eee;
-	}
-
-	.swiper-tab-list {
-		color: #969696;
-		font-weight: bold;
-	}
-
-	.uni-tab-bar .active {
-		color: #343434;
-	}
-
-	.active .swiper-tab-line {
-		border-bottom: 6upx solid #fede33;
-		width: 70upx;
-		margin: auto;
-		border-top: 6upx solid #fede33;
-		border-radius: 20upx;
-	}
-
-	.swiper-box {
-		height: 500upx;
-	}
+<style scoped>
+	
 </style>

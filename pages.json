@@ -6,6 +6,7 @@
 				/* "navigationBarTitleText": "小案例", */
 				"app-plus": {
 					"scrollIndicator": "none", //隐藏滚动条
+					"bounce": "none", //关闭反弹效果
 					"titleNView": {
 						// 搜索框配置
 						"searchInput": {
@@ -23,7 +24,7 @@
 								"color": "#ff9619",
 								"colorPressed": "#bbb",
 								"float": "left",
-								"fontSize": "40px",
+								"fontSize": "28px",
 								"fontSrc": "/static/font/icon.ttf",
 								"text": "\ue65f"
 							},
@@ -32,7 +33,7 @@
 								"color": "#000",
 								"colorPressed": "#bbb",
 								"float": "right",
-								"fontSize": "40px",
+								"fontSize": "28px",
 								"fontSrc": "/static/font/icon.ttf",
 								"text": "\ue61d"
 							}
@@ -70,8 +71,64 @@
 		}, {
 			"path": "components/index/index-list/index-list",
 			"style": {}
+		}, {
+			"path": "components/index/index-list/swiper-tab-head",
+			"style": {}
+		}, {
+			"path": "pages/demo/add-input",
+			"style": {}
+		}, {
+			"path": "components/common/load-more",
+			"style": {}
+		}, {
+			"path": "components/common/prompt",
+			"style": {}
+		}, {
+			"path": "pages/demo/prompt-demo",
+			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/search/search",
+            "style" : {
+				"app-plus": {
+					"scrollIndicator": "none", //隐藏滚动条
+					"bounce": "none", //关闭反弹效果
+					"titleNView": {
+						"autoBackButton":false,//2.6.3版本支持
+						// 搜索框配置
+						"searchInput": {
+							"align": "left",
+							"backgroundColor": "#f7f7f7",
+							"borderRadius": "4px",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#ccc",
+							"disabled": false
+						},
+						// 配置按钮
+						"buttons": [
+							//右边
+							{
+								"color": "#000",
+								"colorPressed": "#bbb",
+								"float": "right",
+								"fontSize": "16px",
+								"text": "取消"
+							}
+						]
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/add-input/add-input",
+            "style" : {
+				"app-plus":{
+					//禁止原生导航
+					"titleNView":false
+				}
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uniapp案列分析",
