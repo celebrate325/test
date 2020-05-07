@@ -10,6 +10,7 @@
 					<view class="uni-uploader__files">
 						<block v-for="(image,index) in imageList" :key="index">
 							<view class="uni-uploader__file">
+								<view class="icon iconfont iconshanchu" @tap="delect"></view>
 								<image class="uni-uploader__img" :src="image" :data-src="image" @tap="previewImage"></image>
 							</view>
 						</block>
@@ -46,7 +47,7 @@
 				count: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 			}
 		},
-		methods:{
+		methods: {
 			chooseImage: async function() {
 				// #ifdef APP-PLUS
 				// TODO 选择相机或相册时 需要弹出actionsheet，目前无法获得是相机还是相册，在失败回调中处理
@@ -57,7 +58,7 @@
 					}
 				}
 				// #endif
-			
+
 				if (this.imageList.length === 9) {
 					return;
 				}
@@ -67,7 +68,7 @@
 					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
 					success: (res) => {
 						this.imageList = this.imageList.concat(res.tempFilePaths);
-						this.$emit('upload',this.imageList)
+						this.$emit('upload', this.imageList)
 					},
 					fail: (err) => {
 						// #ifdef APP-PLUS
@@ -109,7 +110,7 @@
 					}
 				})
 			},
-			
+
 			previewImage: function(e) {
 				var current = e.target.dataset.src
 				uni.previewImage({
@@ -122,7 +123,7 @@
 				let status = permision.isIOS ? await permision.requestIOS(sourceType[type][0]) :
 					await permision.requestAndroid(type === 0 ? 'android.permission.CAMERA' :
 						'android.permission.READ_EXTERNAL_STORAGE');
-			
+
 				if (status === null || status === 1) {
 					status = 1;
 				} else {
@@ -136,9 +137,21 @@
 						}
 					})
 				}
-			
+
 				return status;
-			}
+			},
+			delect(index) {
+				uni.showModal({
+					title: '提示',
+					content: '是否要删除该图片',
+					success: (res) => {
+						if (res.confirm) {
+							this.imageList.splice(index, 1);
+							this.$emit('upload', this.imageList)
+						}
+					}
+				});
+			},
 		}
 	}
 </script>
@@ -147,8 +160,23 @@
 	.cell-pd {
 		padding: 22rpx 30rpx;
 	}
-	
+
 	.list-pd {
 		margin-top: 50rpx;
+	}
+
+	.uni-uploader__file {
+		position: relative;
+	}
+
+	.iconshanchu {
+		position: absolute;
+		right: 0;
+		top: 0;
+		background: #333;
+		color: #fff;
+		padding: 2upx 10upx;
+		border-radius: 10upx;
+		z-index: 999;
 	}
 </style>
