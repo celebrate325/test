@@ -5,7 +5,7 @@
 				<image :src="item.userpic" mode="widthFix" lazy-load></image>
 				{{item.username}}
 			</view>
-			<view class="u-f-ac" v-show="!item.isguanzhu" @tap="guanzhu">
+			<view class="u-f-ac" v-show="!isguanzhu" @tap="guanzhu">
 				<view class="icon iconfont iconzengjia"></view>关注
 			</view>
 		</view>
@@ -19,14 +19,14 @@
 				<view class="index-list-playinfo">{{item.playnum}}次播放 {{item.long}}</view>
 			</template>
 
-		</view>
+		</view>	
 		<view class="index-list4 u-f-ac u-f-jsb">
 			<view class="u-f-ac">
-				<view class="u-f-ac" :class="{'active':(item.infonum.index==1)}" @tap="caozuo('ding')">
-					<view class="icon iconfont iconsmile"></view>{{item.infonum.dingnum}}
+				<view class="u-f-ac" :class="{'active':(infonum.index==1)}" @tap="caozuo('ding')">
+					<view class="icon iconfont iconsmile"></view>{{infonum.dingnum}}
 				</view>
-				<view class="u-f-ac" :class="{'active':(item.infonum.index==2)}" @tap="caozuo('cai')">
-					<view class="icon iconfont iconkulian"></view>{{item.infonum.cainum}}
+				<view class="u-f-ac" :class="{'active':(infonum.index==2)}" @tap="caozuo('cai')">
+					<view class="icon iconfont iconkulian"></view>{{infonum.cainum}}
 				</view>
 			</view>
 			<view class="u-f-ac">
@@ -47,10 +47,16 @@
 			item: Object,
 			index: Number
 		},
+		data() {
+			return {
+				isguanzhu: this.item.isguanzhu,
+				infonum:this.item.infonum
+			}
+		},
 		methods: {
 			//关注
 			guanzhu() {
-				this.item.isguanzhu = true;
+				this.isguanzhu = true;
 				uni.showToast({
 					title: '关注成功'
 				});
@@ -62,20 +68,28 @@
 				// 	dingnum: 11,
 				// 	cainum: 11,
 				// },
-				console.log(this.item.infonum.index)
+				console.log(this.infonum.index)
 				console.log(type)
 				switch (type) {
 					case "ding":
-					if(this.item.infonum.index==1){return;}
-					this.item.infonum.dingnum++;
-					if(this.item.infonum.index==2){this.item.infonum.cainum--;}
-					this.item.infonum.index==1
+						if (this.infonum.index == 1) {
+							return;
+						}
+						this.infonum.dingnum++;
+						if (this.infonum.index == 2) {
+							this.infonum.cainum--;
+						}
+						this.infonum.index == 1
 						break;
 					case "cai":
-					if(this.item.infonum.index==2){return;}
-					this.item.infonum.cainum++;
-					if(this.item.infonum.index==1){this.item.infonum.dingnum--;}
-					this.item.infonum.index==2
+						if (this.infonum.index == 2) {
+							return;
+						}
+						this.infonum.cainum++;
+						if (this.infonum.index == 1) {
+							this.infonum.dingnum--;
+						}
+						this.infonum.index == 2
 						break;
 					default:
 						break;

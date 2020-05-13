@@ -31,10 +31,10 @@
 </template>
 
 <script>
-	import indexList from "../../components/index/index-list/index-list.vue";
-	import swiperTabHead from '../../components/index/index-list/swiper-tab-head.vue';
-	import loadMore from "../../components/common/load-more.vue";
-	import noThing from '../../components/common/no-thing.vue';
+	import indexList from "@/components/index/index-list/index-list.vue";
+	import swiperTabHead from '@/components/index/index-list/swiper-tab-head.vue';
+	import loadMore from "@/components/common/load-more.vue";
+	import noThing from '@/components/common/no-thing.vue';
 	export default {
 		components: {
 			indexList,
@@ -68,12 +68,12 @@
 				newsList: [{
 					loadtext: "上拉加载更多",
 					list: [{
-							userpic: "../../static/logo.png",
+							userpic: "/static/logo.png",
 							username: "昵称",
 							isguanzhu: false,
 							title: "我是标题",
 							type: "img", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
+							titlepic: "/static/demo/detapic/11.jpg",
 							infonum: {
 								index: 0, //0:没有操作 1：顶 2：踩
 								dingnum: 11,
@@ -83,12 +83,12 @@
 							sharenum: 10,
 						},
 						{
-							userpic: "../../static/logo.png",
+							userpic: "/static/logo.png",
 							username: "昵称",
 							isguanzhu: true,
 							title: "我是标题",
 							type: "video", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
+							titlepic: "/static/demo/detapic/11.jpg",
 							playnum: "20w",
 							long: "2:47",
 							infonum: {
@@ -103,12 +103,12 @@
 				}, {
 					loadtext: "上拉加载更多",
 					list: [{
-							userpic: "../../static/logo.png",
+							userpic: "/static/logo.png",
 							username: "昵称",
 							isguanzhu: false,
 							title: "我是标题",
 							type: "img", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
+							titlepic: "/static/demo/detapic/11.jpg",
 							infonum: {
 								index: 0, //0:没有操作 1：顶 2：踩
 								dingnum: 11,
@@ -118,12 +118,12 @@
 							sharenum: 10,
 						},
 						{
-							userpic: "../../static/logo.png",
+							userpic: "/static/logo.png",
 							username: "昵称",
 							isguanzhu: true,
 							title: "我是标题",
 							type: "video", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
+							titlepic: "/static/demo/detapic/11.jpg",
 							playnum: "20w",
 							long: "2:47",
 							infonum: {
@@ -138,12 +138,12 @@
 				}, {
 					loadtext: "上拉加载更多",
 					list: [{
-							userpic: "../../static/logo.png",
+							userpic: "/static/logo.png",
 							username: "昵称",
 							isguanzhu: false,
 							title: "我是标题",
 							type: "img", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
+							titlepic: "/static/demo/detapic/11.jpg",
 							infonum: {
 								index: 0, //0:没有操作 1：顶 2：踩
 								dingnum: 11,
@@ -153,12 +153,12 @@
 							sharenum: 10,
 						},
 						{
-							userpic: "../../static/logo.png",
+							userpic: "/static/logo.png",
 							username: "昵称",
 							isguanzhu: true,
 							title: "我是标题",
 							type: "video", //img:图文，video:视频
-							titlepic: "../../static/demo/detapic/11.jpg",
+							titlepic: "/static/demo/detapic/11.jpg",
 							playnum: "20w",
 							long: "2:47",
 							infonum: {
@@ -200,6 +200,7 @@
 		onNavigationBarButtonTap(e) {
 			switch (e.index){
 				case 1:
+				//打开发布页面
 				uni.navigateTo({
 					url:"../add-input/add-input",
 				})
@@ -218,12 +219,12 @@
 				setTimeout(() => {
 					//获取完成
 					let obj = {
-						userpic: "../../static/logo.png",
+						userpic: "/static/logo.png",
 						username: "昵称",
 						isguanzhu: false,
 						title: "我是标题",
 						type: "img", //img:图文，video:视频
-						titlepic: "../../static/demo/detapic/11.jpg",
+						titlepic: "/static/demo/detapic/11.jpg",
 						infonum: {
 							index: 0, //0:没有操作 1：顶 2：踩
 							dingnum: 11,
