@@ -1,69 +1,44 @@
 <template>
 	<view>
 		<!-- 自定义导航栏 -->
-		<uni-nav-bar :statusBar="true" @clickRight="openAdd">
-			<!-- 左边 -->
-			<block slot="left">
-				<view class="nav-left">
-					<view class="icon iconfont iconqiandao">
+		<news-nav-bar :tabBars="tabBars" :tabIndex="tabIndex" @change-tab="changeTab"></news-nav-bar>
 
-					</view>
-				</view>
-
-			</block>
-			<!-- 中间 -->
-			<view class="nav-tab-bar u-f-ajc">
-				<block v-for="(tab,index) in tabBars" :key="tab.id">
-					<view class="active" :class="{'active':tabIndex==index}" @tap="changeTab(index)">
-						{{tab.name}}
-						<view v-if="(tabIndex==index)" class="nav-tab-bar-line"></view>
-					</view>
-				</block>
-			</view>
-			<!-- 右边 -->
-			<block slot="right">
-				<view class="nav-right">
-					<view class="icon iconfont iconbianji u-f-ajc">
-					</view>
-				</view>
-			</block>
-		</uni-nav-bar>
-		<view class="common-list u-f">
-			<view class="common-list-l">
-				<image src="/static/logo.png" lazy-load></image>
-			</view>
-			<view class="common-list-r">
-				<view class="u-f-ac u-f-jsb">
-					<view class="u-f-ac">昵称
-						<view class="tag-sex icon iconfont iconmale">25</view>
-					</view>
-					<view class="icon iconfont iconzengjia">关注</view>
-				</view>
-				<view>我是标题</view>
-				<view>
-					<image src="../../static/demo/userpic/12.jpg" mode="widthFix" lazy-load></image>
-				</view>
-				<view class="u-f-ac u-f-jsb">
-					<view>深圳 龙岗</view>
-					<view class="u-f-ac">
-						<view class="icon iconfont iconforward">10</view>
-						<view class="icon iconfont iconpinglun">20</view>
-						<view class="icon iconfont icondianzan_active">30</view>
-					</view>
-				</view>
-			</view>
+		<view class="uni-tab-bar">
+			<swiper class="swiper-box" :style="{height:swiperheight+'px'}" :current="tabIndex" @change="tabChange">
+				<!-- 关注 -->
+				<swiper-item>
+					<scroll-view scroll-y class="list" @scrolltolower="loadmore">
+						<block v-for="(item,index) in guanzhu.list" :key="index">
+							<common-list :item="item" :index="index"></common-list>
+						</block>
+						<!-- 上拉加载 -->
+						<load-more :loadtext="guanzhu.loadtext"></load-more>
+					</scroll-view>
+				</swiper-item>
+				<!-- 话题 -->
+				<swiper-item>
+					<scroll-view scroll-y class="list">
+						话题
+					</scroll-view>
+				</swiper-item>
+			</swiper>
 		</view>
 	</view>
 </template>
 
 <script>
-	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue';
+	import newsNavBar from '@/components/common/news/news-nav-bar.vue';
+	import commonList from '@/components/common/common-list.vue';
+	import loadMore from "@/components/common/load-more.vue";
 	export default {
 		components: {
-			uniNavBar
+			commonList,
+			newsNavBar,
+			loadMore
 		},
 		data() {
 			return {
+				swiperheight: 500,
 				tabIndex: 0,
 				tabBars: [{
 						name: "关注",
@@ -73,93 +48,137 @@
 						name: "话题",
 						id: "huati"
 					}
-				]
+				],
+				guanzhu: {
+					loadtext: "上拉加载更多",
+					list: [
+						//文字
+						{
+							userpic: "/static/logo.png",
+							username: "哈哈",
+							sex: 0, //0 男 1 女
+							age: 25,
+							isguanzhu: false,
+							title: "我是标题",
+							titlepic: "",
+							video: false,
+							share: false,
+							path: "深圳 龙岗",
+							sharenum: 20,
+							commentnum: 30,
+							goodnum: 20,
+						},
+						//图文
+						{
+							userpic: "/static/logo.png",
+							username: "哈哈",
+							sex: 0, //0 男 1 女
+							age: 25,
+							isguanzhu: false,
+							title: "我是标题",
+							titlepic: "/static/demo/userpic/13.gif",
+							video: false,
+							share: false,
+							path: "深圳 龙岗",
+							sharenum: 20,
+							commentnum: 30,
+							goodnum: 20,
+						},
+						//视频
+						{
+							userpic: "/static/logo.png",
+							username: "哈哈",
+							sex: 0, //0 男 1 女
+							age: 25,
+							isguanzhu: false,
+							title: "我是标题",
+							titlepic: "/static/demo/userpic/13.gif",
+							video: {
+								looknum: "20w",
+								long: "2:17",
+							},
+							share: false,
+							path: "深圳 龙岗",
+							sharenum: 20,
+							commentnum: 30,
+							goodnum: 20,
+						},
+						//分享
+						{
+							userpic: "/static/logo.png",
+							username: "哈哈",
+							sex: 0, //0 男 1 女
+							age: 25,
+							isguanzhu: false,
+							title: "我是标题",
+							titlepic: "",
+							video: false,
+							share: {
+								title: "我是分享的标题",
+								titlepic: "/static/demo/userpic/12.jpg"
+							},
+							path: "深圳 龙岗",
+							sharenum: 20,
+							commentnum: 30,
+							goodnum: 20,
+						}
+					],
+				}
 			}
 		},
+		onLoad() {
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(100)
+					this.swiperheight = height
+				}
+			})
+		},
 		methods: {
+			// 滑动事件
+			tabChange(e) {
+				this.tabIndex = e.detail.current;
+			},
+			//点击切换
 			changeTab(index) {
 				this.tabIndex = index
 			},
-			openAdd() {
-				//打开发布页面
-				uni.navigateTo({
-					url: "../add-input/add-input",
-				})
-			}
+			//上拉加载
+			loadmore() {
+				if (this.guanzhu.loadtext != "上拉加载更多") {
+					return;
+				}
+				//修改状态
+				this.guanzhu.loadtext = "加载中...";
+				//获取数据
+				setTimeout(() => {
+					//获取完成
+					let obj = {
+						userpic: "/static/logo.png",
+						username: "哈哈",
+						sex: 0, //0 男 1 女
+						age: 25,
+						isguanzhu: false,
+						title: "我是标题",
+						titlepic: "/static/demo/userpic/13.gif",
+						video: false,
+						share: false,
+						path: "深圳 龙岗",
+						sharenum: 20,
+						commentnum: 30,
+						goodnum: 20,
+					};
+					this.guanzhu.list.push(obj);
+					this.guanzhu.loadtext = "上拉加载更多";
+				}, 1000);
+				// this.guanzhu.loadtext="没有更多数据了";
+			},
 		}
 	}
 </script>
 
 <style>
-	.common-list {
-		padding: 20upx;
-	}
 
-	.common-list-l {
-		/* 防止不被压缩 */
-		flex-shrink: 0;
-	}
 
-	.common-list-l image {
-		width: 90upx;
-		height: 90upx;
-		border-radius: 100%;
-	}
-.common-list-r{
-	flex: 1;
-	margin-left: 15upx;
-	border-bottom: 1upx solid #eee;
-	padding-bottom: 10upx;
-}
-	.common-list-r>view:nth-child(3)>image {
-		width: 100%;
-		border-radius: 10upx;
-	}
-.common-list-r>view:nth-child(1)>view:first-child{color: #999;font-size: 32upx;}
-.tag-sex{background-color: #007AFF;color: #fff;font-size: 23upx;padding: 5upx 10upx;margin-left: 10upx;border-radius: 20upx;line-height: 22upx;}
-.common-list-r>view:nth-child(1)>view:last-child{background-color: #eee;padding: 0 10upx;font-size: 26upx;}
-.common-list-r>view:nth-child(2){font-size: 32upx;padding: 12upx 0;}
-.common-list-r>view:nth-child(3){}
-.common-list-r>view:nth-child(4)>view{color: #aaa;}
-.common-list-r>view:nth-child(4)>view:nth-child(2)>view{margin-left: 10upx;padding-left: 5upx;}
-	.nav-left>view,
-	.nav-right>view {
-		font-size: 40upx;
-	}
 
-	.nav-left>view {
-		color: #ff9619;
-	}
-
-	.nav-left {
-		margin-left: 16upx;
-	}
-
-	.nav-right {
-		width: 100%;
-	}
-
-	.nav-tab-bar {
-		width: 100%;
-		margin-left: -20upx;
-	}
-
-	.nav-tab-bar>view {
-		/* border: 1upx solid; */
-		font-size: 32upx;
-		padding: 0 15upx;
-		font-weight: bold;
-		color: #969696;
-	}
-
-	.active {
-		color: #333 !important;
-	}
-
-	.nav-tab-bar-line {
-		border-bottom: 5upx solid red;
-		border-top: 5upx solid red;
-		width: 70upx;
-		border-radius: 20upx;
-	}
 </style>

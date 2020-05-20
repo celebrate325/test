@@ -49,7 +49,8 @@
 			"path": "pages/news/news",
 			"style": {
 				"app-plus":{
-					"titleNView":false
+					"titleNView":false,
+					"bounce":"none"//关闭反弹效果
 				}
 			}
 		},
