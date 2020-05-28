@@ -18,7 +18,21 @@
 				<!-- 话题 -->
 				<swiper-item>
 					<scroll-view scroll-y class="list">
-						话题
+						<!-- 搜索框 -->
+						<view class="search-input">
+							<input class="uni-input" placeholder-class="icon iconfont iconsousuo topic-search" placeholder="搜索内容" />
+						</view>
+						<!-- 轮播图 -->
+						<swiper class="topic-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+							<block v-for="(item,index) in topic.swiper" :key="index">
+								<swiper-item>
+									<image :src="item.src" mode="widthFix" lazy-load></image>
+								</swiper-item>
+							</block>
+						</swiper>
+						<!-- 热门分类 -->
+							<topic-nav :nav="topic.nav"> </topic-nav>
+						<!-- 最近更新 -->
 					</scroll-view>
 				</swiper-item>
 			</swiper>
@@ -30,16 +44,19 @@
 	import newsNavBar from '@/components/common/news/news-nav-bar.vue';
 	import commonList from '@/components/common/common-list.vue';
 	import loadMore from "@/components/common/load-more.vue";
+	import topicNav from "@/components/common/news/topic-nav.vue"
 	export default {
 		components: {
 			commonList,
 			newsNavBar,
-			loadMore
+			loadMore,
+			topicNav
+			
 		},
 		data() {
 			return {
 				swiperheight: 500,
-				tabIndex: 0,
+				tabIndex: 1,
 				tabBars: [{
 						name: "关注",
 						id: "guanzhu"
@@ -123,6 +140,23 @@
 							goodnum: 20,
 						}
 					],
+				},
+				topic: {
+					swiper: [{
+						src: "/static/demo/userpic/12.jpg"
+					}, {
+						src: "/static/demo/userpic/12.jpg"
+					}, {
+						src: "/static/demo/userpic/12.jpg"
+					}],
+					nav:[
+						{name:"最新"},
+						{name:"游戏"},
+						{name:"打卡"},
+						{name:"情感"},
+						{name:"故事"},
+						{name:"喜爱"},
+					]
 				}
 			}
 		},
@@ -178,7 +212,29 @@
 </script>
 
 <style>
+	.search-input {
+		padding: 20upx;
+	}
 
+	.search-input>input {
+		background-color: #f4f4f4;
+		border-radius: 10upx;
+	}
 
+	.topic-search {
+		display: flex;
+		justify-content: center;
+		font-size: 27upx;
+	}
 
+	.topic-swiper {
+		padding: 0 20upx 20upx 20upx;
+	}
+
+	.topic-swiper image {
+		width: 100%;
+		border-radius: 10upx;
+	}
+
+	
 </style>
