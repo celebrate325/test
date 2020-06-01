@@ -31,8 +31,19 @@
 							</block>
 						</swiper>
 						<!-- 热门分类 -->
-							<topic-nav :nav="topic.nav"> </topic-nav>
+						<topic-nav :nav="topic.nav"> </topic-nav>
 						<!-- 最近更新 -->
+						<view class="top-new">
+							<view>最近更新</view>
+							<view class="top-list u-f">
+								<image src="../../static/demo/topicpic/2.jpg" mode="widthFix" lazy-load></image>
+								<view>
+									<view>#话题名称#</view>
+									<view>我是话题描述</view>
+									<view>动态 10 今日 5</view>
+								</view>
+							</view>
+						</view>
 					</scroll-view>
 				</swiper-item>
 			</swiper>
@@ -51,7 +62,7 @@
 			newsNavBar,
 			loadMore,
 			topicNav
-			
+
 		},
 		data() {
 			return {
@@ -149,13 +160,24 @@
 					}, {
 						src: "/static/demo/userpic/12.jpg"
 					}],
-					nav:[
-						{name:"最新"},
-						{name:"游戏"},
-						{name:"打卡"},
-						{name:"情感"},
-						{name:"故事"},
-						{name:"喜爱"},
+					nav: [{
+							name: "最新"
+						},
+						{
+							name: "游戏"
+						},
+						{
+							name: "打卡"
+						},
+						{
+							name: "情感"
+						},
+						{
+							name: "故事"
+						},
+						{
+							name: "喜爱"
+						},
 					]
 				}
 			}
@@ -236,5 +258,30 @@
 		border-radius: 10upx;
 	}
 
-	
+	.top-new {
+		padding: 20upx;
+	}
+
+	.top-new>view:first-child {
+		padding-bottom: 10upx;
+		font-size: 32upx;
+	}
+
+	.top-list {
+		padding: 10upx 0;
+		border-bottom: 1upx solid #EEEEEE;
+	}
+	.top-list image{
+		   width: 150upx;
+		   height: 150upx;
+		   border-radius: 10upx;
+		   margin-right: 20upx;
+	}
+	.top-list>view>view{
+		color: #a4a4a4;
+	}
+	.top-list>view>view:first-child{
+		color: #333333;
+		font-size: 32upx;
+	}
 </style>
