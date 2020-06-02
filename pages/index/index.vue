@@ -192,18 +192,18 @@
 		},
 		//监听搜索框点击事件
 		onNavigationBarSearchInputClicked() {
-			 uni.navigateTo({
-			 	url:"../search/search"
-			 })
+			uni.navigateTo({
+				url: "../search/search"
+			})
 		},
 		//监听原生标题导航按钮点击事件
 		onNavigationBarButtonTap(e) {
-			switch (e.index){
+			switch (e.index) {
 				case 1:
-				//打开发布页面
-				uni.navigateTo({
-					url:"../add-input/add-input",
-				})
+					//打开发布页面
+					uni.navigateTo({
+						url: "../add-input/add-input",
+					})
 					break;
 			}
 		},
@@ -251,5 +251,5 @@
 </script>
 
 <style scoped>
-	
+
 </style>

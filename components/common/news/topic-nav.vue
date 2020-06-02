@@ -2,7 +2,7 @@
 	<view class="topic-nav">
 		<view class="u-f-ac u-f-jsb">
 			<view>热门分类</view>
-			<view class="u-f-ac">
+			<view class="u-f-ac" @tap="openTopicNav">
 				更多<view class="icon iconfont iconjinru"></view>
 			</view>
 		</view>
@@ -18,6 +18,14 @@
 	export default {
 		props:{
 			nav:Array
+		},
+		methods:{
+			openTopicNav(){
+				console.log("dsafa");
+				uni.navigateTo({
+					url:'/pages/topic-nav/topic-nav'
+				})
+			}
 		}
 	}
 </script>
