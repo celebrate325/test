@@ -7,9 +7,11 @@
 					<scroll-view scroll-y class="list" @scrolltolower="loadmore(index)">
 						<template v-if="items.list.length>0">
 							<!-- 话题列表 -->
-							<block v-for="(item,index1) in items.list" :key="index1">
-								<top-list :item="item" :key="index1"></top-list>
-							</block>
+							<view class="topic-view">
+								<block v-for="(item,index1) in items.list" :key="index1">
+									<top-list :item="item" :key="index1"></top-list>
+								</block>
+							</view>
 							<!-- 上拉加载更多 -->
 							<load-more :loadtext="items.loadtext"></load-more>
 						</template>
@@ -65,98 +67,137 @@
 				}],
 				newsList: [{
 					loadtext: "上拉加载更多",
-					list: [
-						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+					list: [{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						},
 						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						},
 						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						},
 						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+					]
+				}, {
+					loadtext: "上拉加载更多",
+					list: [{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
+						},
+						{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						}
 					]
 				}, {
 					loadtext: "上拉加载更多",
-					list: [
-						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+					list: [{
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						},
 						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						},
 						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						},
 						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
-						}
-					]
-				}, {
-					loadtext: "上拉加载更多",
-					list: [
-						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
-						},
-						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
-						},
-						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
-						},
-						{
-							titlepic:"../../static/demo/topicpic/2.jpg",
-							title:"话题名称",
-							desc:"我是话题描述",
-							totalnum:50,
-							todaynum:10,
+							titlepic: "../../static/demo/topicpic/2.jpg",
+							title: "话题名称",
+							desc: "我是话题描述",
+							totalnum: 50,
+							todaynum: 10,
 						}
 					]
 				}, {
@@ -169,59 +210,53 @@
 					loadtext: "上拉加载更多",
 					list: []
 				}],
+			}
+		},
+		onLoad() {
+			uni.getSystemInfo({
+				success: (res) => {
+					let height = res.windowHeight - uni.upx2px(100)
+					this.swiperheight = height
 				}
+			})
+		},
+		methods: {
+			// tabbar点击事件
+			tabtap(index) {
+				this.tabIndex = index;
 			},
-			onLoad() {
-					uni.getSystemInfo({
-						success: (res) => {
-							let height = res.windowHeight - uni.upx2px(100)
-							this.swiperheight = height
-						}
-					})
-				},
-				methods: {
-					// tabbar点击事件
-					tabtap(index) {
-						this.tabIndex = index;
-					},
-					// 滑动事件
-					tabChange(e) {
-						this.tabIndex = e.detail.current;
-					},
-					//上拉加载
-					loadmore(index) {
-						if (this.newsList[index].loadtext != "上拉加载更多") {
-							return;
-						}
-						//修改状态
-						this.newsList[index].loadtext = "加载中...";
-						//获取数据
-						setTimeout(() => {
-							//获取完成
-							let obj = {
-								userpic: "/static/logo.png",
-								username: "昵称",
-								isguanzhu: false,
-								title: "我是标题",
-								type: "img", //img:图文，video:视频
-								titlepic: "/static/demo/detapic/11.jpg",
-								infonum: {
-									index: 0, //0:没有操作 1：顶 2：踩
-									dingnum: 11,
-									cainum: 11,
-								},
-								commentnum: 10,
-								sharenum: 10,
-							};
-							this.newsList[index].list.push(obj);
-							this.newsList[index].loadtext = "上拉加载更多";
-						}, 1000);
-						// this.newsList[index].loadtext="没有更多数据了";
-					},
+			// 滑动事件
+			tabChange(e) {
+				this.tabIndex = e.detail.current;
+			},
+			//上拉加载
+			loadmore(index) {
+				if (this.newsList[index].loadtext != "上拉加载更多") {
+					return;
 				}
+				//修改状态
+				this.newsList[index].loadtext = "加载中...";
+				//获取数据
+				setTimeout(() => {
+					//获取完成
+					let obj = {
+						titlepic: "../../static/demo/topicpic/2.jpg",
+						title: "话题名称",
+						desc: "我是话题描述",
+						totalnum: 50,
+						todaynum: 10,
+					};
+					this.newsList[index].list.push(obj);
+					this.newsList[index].loadtext = "上拉加载更多";
+				}, 1000);
+				// this.newsList[index].loadtext="没有更多数据了";
+			},
 		}
+	}
 </script>
 
-<style>
-
+<style scoped>
+	.topic-view {
+		padding: 0 20upx;
+	}
 </style>
