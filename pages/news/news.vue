@@ -147,6 +147,7 @@
 							goodnum: 20,
 						}
 					],
+				
 				},
 				topic: {
 					swiper: [{
